@@ -14,7 +14,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 // default options
-app.use(fileUpload({ useTempFiles: true }));
+app.use(fileUpload({ useTempFiles: true, }));
 
 // habilitacion carpeta public
 //app.use(express.static(path.resolve(__dirname, '../public')));
