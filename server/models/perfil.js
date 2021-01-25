@@ -26,6 +26,10 @@ let perfilSchema = new Schema({
     update_at: {
         type: Date,
         default: Date.now()
+    },
+    activo: {
+        type: Boolean,
+        default: true
     }
 });
 

@@ -7,7 +7,13 @@ let objSchema = new Schema({
         type: String,
         unique: true,
         required: [true, 'El nombre es requerido']
+    },
+    activo: {
+        type: Boolean,
+        default: true
     }
+}, {
+    timestamps: true
 });
 
 objSchema.plugin(
@@ -15,5 +21,11 @@ objSchema.plugin(
         message: '{PATH} debe ser único'
     }
 );
+
+objSchema.virtual('areaTDoc', {
+    ref: 'AreaTipoDoc', //The Model to use
+    localField: '_id', //Find in Model, where localField 
+    foreignField: 'area', // is equal to foreignField
+});
 
 module.exports = mongoose.model('Area', objSchema);

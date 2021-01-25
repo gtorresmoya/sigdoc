@@ -19,6 +19,10 @@ let objSchema = new Schema({
     update_at: {
         type: Date,
         default: Date.now()
+    },
+    activo: {
+        type: Boolean,
+        default: true
     }
 });
 

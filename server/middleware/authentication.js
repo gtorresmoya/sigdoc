@@ -26,9 +26,7 @@ let verificaToken = (req, res, next) => {
 // ============================
 let verificaAdminRole = (req, res, next) => {
     let usuario = req.usuario;
-    console.log(usuario);
     Perfil.findById(usuario.perfil, (err, perfilDB) => {
-        console.log(JSON.stringify(perfilDB));
         if (err) {
             return res.status(401).json({
                 ok: false,

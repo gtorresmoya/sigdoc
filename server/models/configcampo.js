@@ -13,14 +13,12 @@ let objSchema = new Schema({
         required: [true, 'El valor es requerido'],
         unique: true
     },
-    create_at: {
-        type: Date,
-        default: Date.now()
-    },
-    update_at: {
-        type: Date,
-        default: Date.now()
+    activo: {
+        type: Boolean,
+        default: true
     }
+}, {
+    timestamps: true
 });
 
 objSchema.plugin(
@@ -28,5 +26,11 @@ objSchema.plugin(
         message: '{PATH} debe ser único'
     }
 );
+
+objSchema.virtual('confTDoc', {
+    ref: 'ConfigTipoDoc', //The Model to use
+    localField: '_id', //Find in Model, where localField 
+    foreignField: 'configcampo_id', // is equal to foreignField
+});
 
 module.exports = mongoose.model('ConfigCampo', objSchema);

@@ -1,22 +1,19 @@
 const mongoose = require('mongoose');
-const uniqueValidator = require('mongoose-unique-validator');
 let Schema = mongoose.Schema;
 
 let objSchema = new Schema({
-    area_id: {
+    area: {
         type: Schema.Types.ObjectId,
-        ref: 'Area'
+        ref: 'Area',
+        required: true
     },
-    tipodocumento_id: {
+    tipodocumento: {
         type: Schema.Types.ObjectId,
-        ref: 'TipoDocumento'
+        ref: 'TipoDocumento',
+        required: true
     }
+}, {
+    timestamps: true
 });
-
-objSchema.plugin(
-    uniqueValidator, {
-        message: '{PATH} debe ser único'
-    }
-);
 
 module.exports = mongoose.model('AreaTipoDoc', objSchema);

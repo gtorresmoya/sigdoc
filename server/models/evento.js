@@ -7,6 +7,18 @@ let objSchema = new Schema({
         type: String,
         unique: true,
         required: [true, 'El nombre es requerido']
+    },
+    create_at: {
+        type: Date,
+        default: Date.now()
+    },
+    update_at: {
+        type: Date,
+        default: Date.now()
+    },
+    activo: {
+        type: Boolean,
+        default: true
     }
 });
 

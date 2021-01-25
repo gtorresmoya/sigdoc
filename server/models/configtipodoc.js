@@ -26,15 +26,9 @@ let objSchema = new Schema({
     posicion: {
         type: Number,
         default: 0
-    },
-    create_at: {
-        type: Date,
-        default: Date.now()
-    },
-    update_at: {
-        type: Date,
-        default: Date.now()
     }
+}, {
+    timestamps: true
 });
 
 objSchema.plugin(
@@ -42,5 +36,9 @@ objSchema.plugin(
         message: '{PATH} debe ser único'
     }
 );
+
+// Set Object and Json property to true. Default is set to false
+objSchema.set('toObject', { virtuals: true });
+objSchema.set('toJSON', { virtuals: true });
 
 module.exports = mongoose.model('ConfigTipoDoc', objSchema);

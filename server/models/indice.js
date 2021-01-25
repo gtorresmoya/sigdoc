@@ -78,17 +78,15 @@ let objSchema = new Schema({
         default: ''
     },
     b64Doc: {
-        type: Text,
+        type: String,
         required: [true, 'Debe subir una imagen'],
     },
-    create_at: {
-        type: Date,
-        default: Date.now()
-    },
-    update_at: {
-        type: Date,
-        default: Date.now()
+    activo: {
+        type: Boolean,
+        default: true
     }
+}, {
+    timestamps: true
 });
 
 objSchema.plugin(
