@@ -143,6 +143,33 @@ app.get(`${endpoint}/:id`, [verificaToken, verificaAdminRole], (req, res) => {
         });
     });
 });
+
+/**
+ * Endpoint para obtener realizar una búsqueda sobre uno o varios Indices
+ */
+app.get(`${endpoint}/search`, [verificaToken, verificaAdminRole], (req, res) => {
+    let id = req.params.id;
+    objEndpoint.find(req.body, {}, (err, objDB) => {
+        if (err) {
+            return res.status(500).json({
+                ok: false,
+                err
+            });
+        }
+        if (!objDB) {
+            return res.status(400).json({
+                ok: false,
+                err
+            });
+        }
+
+        res.json({
+            ok: true,
+            indice: objDB
+        });
+    });
+});
+
 /**
  * Endpoint para actualizar un Indice
  */
